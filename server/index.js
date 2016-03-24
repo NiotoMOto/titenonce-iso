@@ -7,11 +7,16 @@ const path = require('path');
 const koa = require('koa');
 const mount = require('koa-mount');
 const serve = require('koa-static');
+const noCache = require('koa-no-cache');
 
 const middlewares = require('./middlewares');
 const routes = require('./routes');
 
 const app = new koa();
+
+app.use(noCache({
+  global: true
+}));
 
 if (process.env.NODE_ENV !== 'production') {
   app.use(require('koa-proxy')({

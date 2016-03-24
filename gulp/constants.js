@@ -11,7 +11,7 @@ exports.tsProject = plugins.typescript.createProject('tsconfig.json', {
 exports.paths = {
   common: {
     root: './common',
-    react: './common/**/*.{js,jsx}',
+    react: './common/**/*.{ts,tsx}',
     entry: './common/index.js',
     json: './common/**/*.json',
   },

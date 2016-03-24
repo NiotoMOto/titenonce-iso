@@ -25,7 +25,7 @@ gulp.task('webpack', ['node:kill'], (done) =>
 
 gulp.task('compile', ['node:kill'], () =>
   constants.tsProject.src()
-    .pipe(plugins.cached('compiling'))
+    // .pipe(plugins.cached('compiling'))
     .pipe(plugins.typescript(constants.tsProject)
       .on('error', function(err) {
         plugins.util.log(err);

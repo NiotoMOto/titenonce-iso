@@ -1,0 +1,14 @@
+.main-toolbar {
+  background-color: white !important;
+  border: 1px solid #dce0e0;
+  position: fixed;
+  top: 0;
+  z-index: 300;
+  .seach {
+    margin-left: 20px;
+  }
+}
+
+.brand-title {
+  margin-left: 10px;
+}
