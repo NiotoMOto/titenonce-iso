@@ -9,10 +9,19 @@ router.get('/', function* () {
   this.body = yield this.render('Home', {
     props: { cheers: 'toto' },
   });
-}).get('/service/:id', function* () {
+});
+
+router.get('/services', function* () {
+  this.body = yield this.render('Services', {
+    props: { serviceId: this.params.id },
+    scripts: ['https://maps.googleapis.com/maps/api/js'],
+  });
+});
+
+router.get('/services/:id', function* () {
   this.body = yield this.render('Service', {
-    props: { serviceId: this.params.id},
-    scripts: ['https://maps.googleapis.com/maps/api/js']
+    props: { serviceId: this.params.id },
+    scripts: ['https://maps.googleapis.com/maps/api/js'],
   });
 });
 

@@ -192,6 +192,7 @@ declare namespace __MaterialUI {
     namespace Card {
 
         interface CardProps extends React.Props<Card> {
+            className?: string;
             expandable?: boolean;
             initiallyExpanded?: boolean;
             onExpandedChange?: (isExpanded: boolean) => void;
@@ -546,6 +547,7 @@ declare namespace __MaterialUI {
     }
 
     interface LeftNavProps extends React.Props<LeftNav> {
+        open?: boolean;
         disableSwipeToOpen?: boolean;
         docked?: boolean;
         header?: React.ReactElement<any>;

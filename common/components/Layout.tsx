@@ -2,29 +2,62 @@
 
 import * as React from 'react';
 import {Toolbar, ToolbarGroup, TextField} from 'material-ui';
-import {IconMenu, IconButton, FontIcon, MenuItem} from 'material-ui';
+import {IconMenu, IconButton, FontIcon, MenuItem, FlatButton, LeftNav} from 'material-ui';
 const { Component } = React;
 
 interface IProps {
   children?: React.ReactNode;
   title: string;
+  open?: boolean;
 }
 
-export default class Layout extends Component<IProps, void> {
+interface IStates {
+  open?: boolean;
+}
+
+export default class Layout extends Component<IProps, IStates> {
+  state= {
+    open: false
+  }
+
+  constructor(props){
+    super(props);
+    // this.setState({open: this.props.open ? this.props.open : false});
+    this.handleNav = this.handleNav.bind(this);
+  }
+
+  handleNav(){
+    console.log('handleNav');
+    const newValue = !this.state.open;
+    this.setState({
+      open: newValue
+    })
+  }
+
   render(): JSX.Element {
     return (
-      <div>
+      <div className={`page ${this.state.open ? 'nav-open' : 'nav-close'}`}>
+        <LeftNav open={this.state.open}>
+          <MenuItem onTouchTap={this.handleNav} index={1}>Menu Item</MenuItem>
+          <MenuItem index={2}>Menu Item 2</MenuItem>
+        </LeftNav>
         <Toolbar className="main-toolbar">
-          <ToolbarGroup className="brand-title" firstChild={true} float="left">
-            <h4>Titenonce</h4>
+          <ToolbarGroup className="brand-title toolbar-group" firstChild={true} float="left">
+            <IconButton onClick={this.handleNav} iconClassName="icon-menu" />
           </ToolbarGroup>
-          <ToolbarGroup  float="left">
+          <ToolbarGroup className="brand-title toolbar-group" float="left">
+            <h2>Titesnonce</h2>
+          </ToolbarGroup>
+          <ToolbarGroup  float="left" className="toolbar-group">
             <TextField hintText="recherche" className="seach"/>
           </ToolbarGroup>
-          <ToolbarGroup float="right">
+          <ToolbarGroup  float="left" className="toolbar-group">
+            <IconButton iconClassName="icon-search" />
+          </ToolbarGroup>
+          <ToolbarGroup float="right" className="toolbar-group">
             <IconMenu
               iconButtonElement= {
-                <IconButton iconClassName="muidocs-icon-custom-github" />
+                <IconButton iconClassName="icon-person" />
               }
               targetOrigin={{horizontal: 'right', vertical: 'bottom'}}
               anchorOrigin={{horizontal: 'right', vertical: 'top'}}

@@ -23,6 +23,25 @@ gulp.task('webpack', ['node:kill'], (done) =>
     done();
   }));
 
+gulp.task('iconfont', function(){
+  gulp.src(constants.paths.font.svg)
+    .pipe(plugins.iconfontCss({
+      fontName: constants.paths.font.name,
+      path: constants.paths.font.template,
+      targetPath: '../../icons.scss',
+      fontPath: './fonts/icon/'
+    }))
+    .pipe(plugins.iconfont({
+      fontName: constants.paths.font.name,
+      normalize: true
+     }))
+    .pipe(gulp.dest(constants.paths.font.dir));
+});
+
+gulp.task('copyIcons', ['iconfont'], () => {
+  gulp.src(constants.paths.font.icons, {base: constants.paths.font.dir}).pipe(gulp.dest(`${constants.paths.public.css}/fonts/icon/`));
+})
+
 gulp.task('compile', ['node:kill'], () =>
   constants.tsProject.src()
     // .pipe(plugins.cached('compiling'))
@@ -61,7 +80,7 @@ gulp.task('node-after-compile', ['copy', 'compile'], node.start);
 
 gulp.task('node-after-copy', ['copy'], node.start);
 
-gulp.task('watch', ['scss', 'webpack', 'compile', 'copy'], () => {
+gulp.task('watch', ['copyIcons', 'scss', 'webpack', 'compile', 'copy'], () => {
   gulp.watch(constants.paths.scss, ['scss']);
   gulp.watch(constants.paths.common.react, ['node-after-compile']);
   gulp.watch(constants.paths.server.noReact, ['node:restart']);

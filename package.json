@@ -46,6 +46,8 @@
     "gulp-concat": "*",
     "gulp-cssnano": "*",
     "gulp-eslint": "*",
+    "gulp-iconfont": "^6.0.0",
+    "gulp-iconfont-css": "^2.1.0",
     "gulp-load-plugins": "*",
     "gulp-minify-css": "*",
     "gulp-sass": "*",

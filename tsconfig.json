@@ -36,6 +36,7 @@
     "./common/components/ServiceItem.tsx",
     "./common/containers/Home.tsx",
     "./common/containers/Service.tsx",
+    "./common/containers/Services.tsx",
     "./common/fake/services.ts",
     "./common/index.tsx",
     "./common/reducers/default.ts",
