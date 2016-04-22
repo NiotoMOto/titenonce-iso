@@ -33,17 +33,14 @@
 	@if $filename == location {
 		$char: "\E002";
 	}
-	@if $filename == menu {
+	@if $filename == person {
 		$char: "\E003";
 	}
-	@if $filename == person {
+	@if $filename == search {
 		$char: "\E004";
 	}
-	@if $filename == search {
-		$char: "\E005";
-	}
 	@if $filename == warning {
-		$char: "\E006";
+		$char: "\E005";
 	}
 
 	@return $char;
@@ -65,9 +62,6 @@
 }
 .icon-location {
 	@include icon(location);
-}
-.icon-menu {
-	@include icon(menu);
 }
 .icon-person {
 	@include icon(person);

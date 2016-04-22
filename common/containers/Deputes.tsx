@@ -15,11 +15,10 @@ import services from '../fake/services';
 const { Component } = React;
 
 interface IProps {
-  serviceId: string;
+  deputes: Array<any>;
 }
 
 interface IState {
-  service?: any;
   lat?: any;
   long?: any;
 }
@@ -28,7 +27,6 @@ interface IState {
 @connect(id)
 export default class Service extends Component<IProps, IState> {
   state = {
-    service: services[0],
     lat: '10',
     long:'10',
   }
@@ -63,12 +61,12 @@ export default class Service extends Component<IProps, IState> {
           </div>
         </div>
         <div className="row" style={{height: '100%'}}>
-          <Paper className="col-sm-8 no-padding h-100">
-            {services.map(tile => (
-              <ServiceItem className="col-sm-12 col-md-2" item={tile} />
+          <Paper className="col-sm-7 no-padding h-100">
+            {this.props.deputes.map(elu => (
+              <ServiceItem className="col-sm-12 col-md-2" item={elu} />
             ))}
           </Paper>
-          <Paper className="col-sm-4 no-padding map-container">
+          <Paper className="col-sm-5 no-padding map-container">
             <div style={{width:'100%',height:'100%'}}>
               <GoogleMap
                 bootstrapURLKeys={{key: 'AIzaSyBSpdnsV7268FmZmj5dFng0-VOyR_RiyD4'}}

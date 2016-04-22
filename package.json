@@ -28,6 +28,7 @@
     "react-redux": "*",
     "react-tap-event-plugin": "*",
     "redux": "*",
+    "request-promise": "^3.0.0",
     "serialize-javascript": "*",
     "whatwg-fetch": "*"
   },

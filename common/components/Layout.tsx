@@ -39,7 +39,7 @@ export default class Layout extends Component<IProps, IStates> {
       <div className={`page ${this.state.open ? 'nav-open' : 'nav-close'}`}>
         <LeftNav open={this.state.open}>
           <MenuItem onTouchTap={this.handleNav} index={1}>Menu Item</MenuItem>
-          <MenuItem index={2}>Menu Item 2</MenuItem>
+          <MenuItem href="/services" index={2}>Menu Item 2</MenuItem>
         </LeftNav>
         <Toolbar className="main-toolbar">
           <ToolbarGroup className="brand-title toolbar-group" firstChild={true} float="left">

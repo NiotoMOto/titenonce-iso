@@ -2,6 +2,7 @@
 
 const koa = require('koa');
 const router = require('koa-router')();
+const rp = require('request-promise');
 
 const main = koa();
 
@@ -11,17 +12,19 @@ router.get('/', function* () {
   });
 });
 
-router.get('/services', function* () {
-  this.body = yield this.render('Services', {
-    props: { serviceId: this.params.id },
+router.get('/deputes', function* () {
+  const deputes = yield rp('http://localhost:4001/api/v1/elus?limit=30').then(json => {
+    return JSON.parse(json);
+  });
+  this.body = yield this.render('Deputes', {
+    props: { deputes: deputes },
     scripts: ['https://maps.googleapis.com/maps/api/js'],
   });
 });
 
 router.get('/services/:id', function* () {
   this.body = yield this.render('Service', {
-    props: { serviceId: this.params.id },
-    scripts: ['https://maps.googleapis.com/maps/api/js'],
+    props: { serviceId: this.params.id }
   });
 });
 
